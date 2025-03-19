@@ -6,12 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import me.chanjar.weixin.common.util.json.WxGsonBuilder;
 import me.chanjar.weixin.cp.bean.workbench.WorkBenchKeyData;
 import me.chanjar.weixin.cp.bean.workbench.WorkBenchList;
 import me.chanjar.weixin.cp.constant.WxCpConsts;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 /**
  * The type Wx cp agent work bench.
@@ -33,6 +35,10 @@ public class WxCpAgentWorkBench implements Serializable {
    * 用户的userid
    */
   private String userId;
+  /**
+   * 用户的userIds
+   */
+  private Set<String> userIds;
   /**
    * 应用id
    */
@@ -94,6 +100,20 @@ public class WxCpAgentWorkBench implements Serializable {
   }
 
   /**
+   * 生成批量用户数据Json字符串
+   *
+   * @return the string
+   */
+  public String toBatchUserDataString() {
+    JsonObject userDataObject = new JsonObject();
+    userDataObject.addProperty("agentid", this.agentId);
+    JsonArray useridList = WxGsonBuilder.create().toJsonTree(this.userIds).getAsJsonArray();
+    userDataObject.add("userid_list", useridList);
+    this.handleBatch(userDataObject);
+    return userDataObject.toString();
+  }
+
+  /**
    * 处理不用类型的工作台数据
    */
   private void handle(JsonObject templateObject) {
@@ -144,6 +164,77 @@ public class WxCpAgentWorkBench implements Serializable {
           webview.addProperty("enable_webview_click", this.enableWebviewClick);
         }
         templateObject.add("webview", webview);
+        break;
+      }
+      default: {
+        //do nothing
+      }
+    }
+  }
+
+  /**
+   * 处理不用类型的工作台数据
+   */
+  private void handleBatch(JsonObject templateObject) {
+    switch (this.getType()) {
+      case WxCpConsts.WorkBenchType.KEYDATA: {
+        JsonArray keyDataArray = new JsonArray();
+        JsonObject itemsObject = new JsonObject();
+        for (WorkBenchKeyData keyDataItem : this.keyDataList) {
+          JsonObject keyDataObject = new JsonObject();
+          keyDataObject.addProperty("key", keyDataItem.getKey());
+          keyDataObject.addProperty("data", keyDataItem.getData());
+          keyDataObject.addProperty("jump_url", keyDataItem.getJumpUrl());
+          keyDataObject.addProperty("pagepath", keyDataItem.getPagePath());
+          keyDataArray.add(keyDataObject);
+        }
+        itemsObject.add("items", keyDataArray);
+        JsonObject dataObject = new JsonObject();
+        dataObject.addProperty("type", WxCpConsts.WorkBenchType.KEYDATA);
+        dataObject.add("keydata", itemsObject);
+        templateObject.add("data", dataObject);
+        break;
+      }
+      case WxCpConsts.WorkBenchType.IMAGE: {
+        JsonObject image = new JsonObject();
+        image.addProperty("url", this.url);
+        image.addProperty("jump_url", this.jumpUrl);
+        image.addProperty("pagepath", this.pagePath);
+        JsonObject dataObject = new JsonObject();
+        dataObject.addProperty("type", WxCpConsts.WorkBenchType.IMAGE);
+        dataObject.add("image", image);
+        templateObject.add("data", dataObject);
+        break;
+      }
+      case WxCpConsts.WorkBenchType.LIST: {
+        JsonArray listArray = new JsonArray();
+        JsonObject itemsObject = new JsonObject();
+        for (WorkBenchList listItem : this.lists) {
+          JsonObject listObject = new JsonObject();
+          listObject.addProperty("title", listItem.getTitle());
+          listObject.addProperty("jump_url", listItem.getJumpUrl());
+          listObject.addProperty("pagepath", listItem.getPagePath());
+          listArray.add(listObject);
+        }
+        itemsObject.add("items", listArray);
+        JsonObject dataObject = new JsonObject();
+        dataObject.addProperty("type", WxCpConsts.WorkBenchType.LIST);
+        dataObject.add("list", itemsObject);
+        templateObject.add("data", dataObject);
+        break;
+      }
+      case WxCpConsts.WorkBenchType.WEBVIEW: {
+        JsonObject webview = new JsonObject();
+        webview.addProperty("url", this.url);
+        webview.addProperty("jump_url", this.jumpUrl);
+        webview.addProperty("pagepath", this.pagePath);
+        if (null != this.enableWebviewClick) {
+          webview.addProperty("enable_webview_click", this.enableWebviewClick);
+        }
+        JsonObject dataObject = new JsonObject();
+        dataObject.addProperty("type", WxCpConsts.WorkBenchType.WEBVIEW);
+        dataObject.add("webview", webview);
+        templateObject.add("data", dataObject);
         break;
       }
       default: {
