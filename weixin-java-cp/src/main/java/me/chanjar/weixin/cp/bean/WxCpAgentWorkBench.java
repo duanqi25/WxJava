@@ -13,7 +13,6 @@ import me.chanjar.weixin.cp.constant.WxCpConsts;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 /**
  * The type Wx cp agent work bench.
@@ -38,7 +37,7 @@ public class WxCpAgentWorkBench implements Serializable {
   /**
    * 用户的userIds
    */
-  private Set<String> userIds;
+  private List<String> useridList;
   /**
    * 应用id
    */
@@ -64,6 +63,15 @@ public class WxCpAgentWorkBench implements Serializable {
    * 参考示例：<a href="wxwork://openurl?url=https%3A%2F%2Fwork.weixin.qq.com%2F">今日要闻</a>
    */
   private Boolean enableWebviewClick;
+  /**
+   * 高度。可以有两种选择：single_row与double_row。当为single_row时，高度为106px（如果隐藏标题则为147px）。
+   * 当为double_row时，高度固定为171px（如果隐藏标题则为212px）。默认值为double_row
+   */
+  private String height;
+  /**
+   * 是否要隐藏展示了应用名称的标题部分，默认值为false。
+   */
+  private Boolean hideTitle;
 
   private List<WorkBenchKeyData> keyDataList;
 
@@ -107,7 +115,7 @@ public class WxCpAgentWorkBench implements Serializable {
   public String toBatchUserDataString() {
     JsonObject userDataObject = new JsonObject();
     userDataObject.addProperty("agentid", this.agentId);
-    JsonArray useridList = WxGsonBuilder.create().toJsonTree(this.userIds).getAsJsonArray();
+    JsonArray useridList = WxGsonBuilder.create().toJsonTree(this.useridList).getAsJsonArray();
     userDataObject.add("userid_list", useridList);
     this.handleBatch(userDataObject);
     return userDataObject.toString();
@@ -160,9 +168,9 @@ public class WxCpAgentWorkBench implements Serializable {
         webview.addProperty("url", this.url);
         webview.addProperty("jump_url", this.jumpUrl);
         webview.addProperty("pagepath", this.pagePath);
-        if (null != this.enableWebviewClick) {
-          webview.addProperty("enable_webview_click", this.enableWebviewClick);
-        }
+        webview.addProperty("enable_webview_click", this.enableWebviewClick);
+        webview.addProperty("height", this.height);
+        webview.addProperty("hide_title", this.hideTitle);
         templateObject.add("webview", webview);
         break;
       }
@@ -228,9 +236,9 @@ public class WxCpAgentWorkBench implements Serializable {
         webview.addProperty("url", this.url);
         webview.addProperty("jump_url", this.jumpUrl);
         webview.addProperty("pagepath", this.pagePath);
-        if (null != this.enableWebviewClick) {
-          webview.addProperty("enable_webview_click", this.enableWebviewClick);
-        }
+        webview.addProperty("enable_webview_click", this.enableWebviewClick);
+        webview.addProperty("height", this.height);
+        webview.addProperty("hide_title", this.hideTitle);
         JsonObject dataObject = new JsonObject();
         dataObject.addProperty("type", WxCpConsts.WorkBenchType.WEBVIEW);
         dataObject.add("webview", webview);
