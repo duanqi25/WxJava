@@ -4,7 +4,8 @@ import com.github.binarywang.wxpay.exception.WxPayException;
 import com.github.binarywang.wxpay.util.HttpProxyUtils;
 import com.github.binarywang.wxpay.util.ResourcesUtils;
 import com.github.binarywang.wxpay.v3.WxPayV3HttpClientBuilder;
-import com.github.binarywang.wxpay.v3.auth.*;
+import com.github.binarywang.wxpay.v3.auth.Verifier;
+import com.github.binarywang.wxpay.v3.auth.WxPayValidator;
 import com.github.binarywang.wxpay.v3.util.PemUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,7 +20,6 @@ import org.apache.http.ssl.SSLContexts;
 import javax.net.ssl.SSLContext;
 import java.io.*;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.security.KeyStore;
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -320,7 +320,12 @@ public class WxPayConfig {
       //构造Http Proxy正向代理
       WxPayHttpProxy wxPayHttpProxy = getWxPayHttpProxy();
 
-      Verifier certificatesVerifier = getVerifier(merchantPrivateKey, wxPayHttpProxy, publicKey);
+      // 构造证书验签器
+      Verifier certificatesVerifier = VerifierBuilder.build(
+        this.getCertSerialNo(), this.getMchId(), this.getApiV3Key(), merchantPrivateKey, wxPayHttpProxy,
+        this.getCertAutoUpdateTime(), this.getPayBaseUrl(),
+        this.getPublicKeyId(), publicKey
+      );
 
       WxPayV3HttpClientBuilder wxPayV3HttpClientBuilder = WxPayV3HttpClientBuilder.create()
         .withMerchant(mchId, certSerialNo, merchantPrivateKey)
@@ -344,23 +349,6 @@ public class WxPayConfig {
     } catch (Exception e) {
       throw new WxPayException("v3请求构造异常！", e);
     }
-  }
-
-  private Verifier getVerifier(PrivateKey merchantPrivateKey, WxPayHttpProxy wxPayHttpProxy, PublicKey publicKey) {
-    Verifier certificatesVerifier = null;
-    // 如果配置了平台证书，则初始化验证器以备v2版本接口验签（公钥灰度实现）
-    if (this.getPrivateCertPath() != null && this.getPrivateKeyPath() != null) {
-      certificatesVerifier = new AutoUpdateCertificatesVerifier(
-        new WxPayCredentials(mchId, new PrivateKeySigner(certSerialNo, merchantPrivateKey)),
-        this.getApiV3Key().getBytes(StandardCharsets.UTF_8), this.getCertAutoUpdateTime(),
-        this.getPayBaseUrl(), wxPayHttpProxy);
-    }
-    if (publicKey != null) {
-      Verifier publicCertificatesVerifier = new PublicCertificateVerifier(publicKey, publicKeyId);
-      publicCertificatesVerifier.setOtherVerifier(certificatesVerifier);
-      certificatesVerifier = publicCertificatesVerifier;
-    }
-    return certificatesVerifier;
   }
 
   /**
