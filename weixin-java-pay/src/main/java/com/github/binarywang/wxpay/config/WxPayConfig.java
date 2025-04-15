@@ -228,6 +228,11 @@ public class WxPayConfig {
   private Verifier verifier;
 
   /**
+   * 是否将全部v3接口的请求都添加Wechatpay-Serial请求头，默认不添加
+   */
+  private boolean strictlyNeedWechatPaySerial = false;
+
+  /**
    * 返回所设置的微信支付接口请求地址域名.
    *
    * @return 微信支付接口请求地址域名
