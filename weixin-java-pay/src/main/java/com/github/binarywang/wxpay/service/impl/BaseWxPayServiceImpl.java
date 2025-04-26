@@ -64,8 +64,6 @@ public abstract class BaseWxPayServiceImpl implements WxPayService {
 
   private static final Gson GSON = new GsonBuilder().create();
 
-  final Logger log = LoggerFactory.getLogger(this.getClass());
-
   static ThreadLocal<WxPayApiData> wxApiData = new ThreadLocal<>();
 
 
