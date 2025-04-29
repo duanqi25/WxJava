@@ -198,7 +198,7 @@ public class WxPayServiceApacheHttpImpl extends BaseWxPayServiceImpl {
       JsonObject jsonObject = GsonParser.parse(responseString);
       throw convertException(jsonObject);
     } catch (Exception e) {
-      this.log.error("\n【请求地址】：{}\n【异常信息】：{}", url, e.getMessage());
+      log.error("\n【请求地址】：{}\n【异常信息】：{}", url, e.getMessage());
       throw (e instanceof WxPayException) ? (WxPayException) e : new WxPayException(e.getMessage(), e);
     } finally {
       httpRequest.releaseConnection();
@@ -344,7 +344,7 @@ public class WxPayServiceApacheHttpImpl extends BaseWxPayServiceImpl {
   }
 
   private WxPayException convertException(JsonObject jsonObject) {
-    //todo 这里考虑使用新的适用于V3的异常
+    //TODO 这里考虑使用新的适用于V3的异常
     JsonElement codeElement = jsonObject.get("code");
     String code = codeElement == null ? null : codeElement.getAsString();
     String message = jsonObject.get("message").getAsString();
