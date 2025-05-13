@@ -113,10 +113,13 @@
 <details>
 <summary>点此展开查看</summary>
   
-1. 本项目定为大约每两个月发布一次正式版（同时 `develop` 分支代码合并进入 `release` 分支），版本号格式为 `X.X.0`（如`2.1.0`，`2.2.0`等），遇到重大问题需修复会及时提交新版本，欢迎大家随时提交Pull Request；
-2. BUG修复和新特性一般会先发布成小版本作为临时测试版本（如`3.6.8.B`，即尾号不为0，并添加B，以区别于正式版），代码仅存在于 `develop` 分支中；
-3. 目前最新版本号为 [![Maven Central](https://img.shields.io/maven-central/v/com.github.binarywang/wx-java.svg)](http://mvnrepository.com/artifact/com.github.binarywang/wx-java) ，也可以通过访问链接 [【微信支付】](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.binarywang%22%20AND%20a%3A%22weixin-java-pay%22) 、[【微信小程序】](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.binarywang%22%20AND%20a%3A%22weixin-java-miniapp%22) 、[【公众号】](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.binarywang%22%20AND%20a%3A%22weixin-java-mp%22) 、[【企业微信】](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.binarywang%22%20AND%20a%3A%22weixin-java-cp%22)、[【开放平台】](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.binarywang%22%20AND%20a%3A%22weixin-java-open%22)
-分别查看所有最新的版本。 
+1. 本项目定为大约每半年左右发布一次正式版，遇到重大问题需修复会及时提交新版本，欢迎大家随时提交 `Pull Request`；
+2. 每次代码更新都会自动构建出新版本方便及时尝鲜，版本号格式为 `x.x.x-时间戳`;
+3. 发布正式版时，`develop` 分支代码合并进入 `release` 分支），版本号格式为 `X.X.0`（如`2.1.0`，`2.2.0`等）；
+4. 每隔一段时间后，会发布测试版本（如`3.6.8.B`，即尾号不为0，并添加B，以区别于正式版），代码仅存在于 `develop` 分支中；
+5. 目前最新版本号为 [![Maven Central](https://img.shields.io/maven-central/v/com.github.binarywang/wx-java.svg)](http://mvnrepository.com/artifact/com.github.binarywang/wx-java) ，也可以通过访问以下链接分别查看各个模块最新的版本： 
+[【微信支付】](https://central.sonatype.com/artifact/com.github.binarywang/weixin-java-pay/versions) 、[【小程序】](https://central.sonatype.com/artifact/com.github.binarywang/weixin-java-miniapp/versions) 、[【公众号】](https://central.sonatype.com/artifact/com.github.binarywang/weixin-java-mp/versions) 、[【企业微信】](https://central.sonatype.com/artifact/com.github.binarywang/weixin-java-cp/versions)、[【开放平台】](https://central.sonatype.com/artifact/com.github.binarywang/weixin-java-open/versions)、[【视频号】](https://central.sonatype.com/artifact/com.github.binarywang/weixin-java-channel/versions)
+
 
 </details>
 
