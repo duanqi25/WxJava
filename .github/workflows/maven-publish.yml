@@ -4,6 +4,10 @@ on:
     branches:
       - develop
 
+concurrency:
+  group: maven-publish-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
