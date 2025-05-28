@@ -1,9 +1,10 @@
 ## WxJava - 微信开发 Java SDK
-
-[![码云Gitee](https://gitee.com/binary/weixin-java-tools/badge/star.svg?theme=blue)](https://gitee.com/binary/weixin-java-tools)
 [![Github](https://img.shields.io/github/stars/binarywang/WxJava?logo=github&style=flat&label=Stars)](https://github.com/binarywang/WxJava)
+[![Gitee](https://gitee.com/binary/weixin-java-tools/badge/star.svg?theme=blue)](https://gitee.com/binary/weixin-java-tools)
+[![GitCode](https://gitcode.com/binary/WxJava/star/badge.svg)](https://gitcode.com/binary/WxJava)
+
 [![GitHub release](https://img.shields.io/github/release/binarywang/WxJava?label=Release)](https://github.com/binarywang/WxJava/releases)
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.binarywang/wx-java?label=Maven)](http://mvnrepository.com/artifact/com.github.binarywang/wx-java)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.binarywang/wx-java?label=Maven)](https://central.sonatype.com/artifact/com.github.binarywang/wx-java/versions)
 [![Build Status](https://img.shields.io/circleci/project/github/binarywang/WxJava/develop.svg?sanitize=true&label=Build)](https://circleci.com/gh/binarywang/WxJava/tree/develop)
 [![使用IntelliJ IDEA开发维护](https://img.shields.io/badge/IntelliJ%20IDEA-支持-blue.svg)](https://www.jetbrains.com/?from=WxJava-weixin-java-tools)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -89,7 +90,7 @@
 
 ---------------------------------
 ### Maven 引用方式
-注意：最新版本（包括测试版）为 [![Maven Central](https://img.shields.io/maven-central/v/com.github.binarywang/wx-java.svg)](http://mvnrepository.com/artifact/com.github.binarywang/wx-java)，以下为最新正式版。
+注意：最新版本（包括测试版）为 [![Maven Central](https://img.shields.io/maven-central/v/com.github.binarywang/wx-java.svg)](https://central.sonatype.com/artifact/com.github.binarywang/wx-java/versions)，以下为最新正式版。
 
 ```xml
 <dependency>
