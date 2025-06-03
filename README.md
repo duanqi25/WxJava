@@ -21,45 +21,45 @@
 ### 微信`Java`开发工具包，支持包括微信支付、开放平台、公众号、企业微信、视频号、小程序等微信功能模块的后端开发。
 <div align="center">
   <b>特别赞助</b>
+  <table cellspacing="0" cellpadding="0" width="500">
+    <tr>
+      <td align="center" colspan="3">
+        <a href="http://www.ccflow.org/?from=wxjava" target="_blank">
+          <img height="120" src="https://ccfast.cc/AD/ccflow2.png" alt="ccflow">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2">
+        <a href="https://www.jeequan.com/product/jeepay.html" target="_blank">
+          <img height="120" src="https://jeequan.oss-cn-beijing.aliyuncs.com/jeepay/img/wxjava_jeepay.png" alt="计全支付Jeepay,开源支付系统">
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://www.mall4j.com/cn/?statId=9" target="_blank">
+          <img height="120" src="https://img.mall4j.com/mall.png" alt="Mall4j">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <a href="http://mp.weixin.qq.com/mp/homepage?__biz=MzI3MzAwMzk4OA==&hid=1&sn=f31af3bf562b116b061c9ab4edf70b61&scene=18#wechat_redirect" target="_blank">
+          <img height="120" src="https://gitee.com/binary/weixin-java-tools/raw/develop/images/qrcodes/mp.png" alt="mp qrcode">
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://www.diboot.com?from=wxjava" target="_blank">
+          <img height="120" src="https://www.diboot.com/img/diboot_ad.png" alt="diboot低代码开发平台">
+        </a>
+      </td>
+      <td align="center">
+        <a href="#" target="_blank">
+          <img height="120" src="images/banners/aliyun.jpg" alt="ad">
+        </a>
+      </td>
+    </tr>
+  </table>
 </div>
-<table align="center" cellspacing="0" cellpadding="0" width="500">
-  <tr>
-    <td align="center" valign="middle" colspan="3">
-      <a href="http://www.ccflow.org/?from=wxjava" target="_blank">
-        <img height="120" src="https://ccfast.cc/AD/ccflow2.png" alt="ccflow">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" valign="middle" colspan="2">
-      <a href="https://www.jeequan.com/product/jeepay.html" target="_blank">
-        <img height="120" src="https://jeequan.oss-cn-beijing.aliyuncs.com/jeepay/img/wxjava_jeepay.png" alt="计全支付Jeepay,开源支付系统">
-      </a>
-    </td>
-    <td align="center" valign="middle" colspan="1">
-      <a href="https://www.mall4j.com/cn/?statId=9" target="_blank">
-        <img height="120" src="https://img.mall4j.com/mall.png" alt="Mall4j">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" valign="middle">
-      <a href="http://mp.weixin.qq.com/mp/homepage?__biz=MzI3MzAwMzk4OA==&hid=1&sn=f31af3bf562b116b061c9ab4edf70b61&scene=18#wechat_redirect" target="_blank">
-        <img height="120" src="https://gitee.com/binary/weixin-java-tools/raw/develop/images/qrcodes/mp.png" alt="mp qrcode">
-      </a>
-    </td>
-    <td align="center" valign="middle">
-      <a href="https://www.diboot.com?from=wxjava" target="_blank">
-        <img height="120" src="https://www.diboot.com/img/diboot_ad.png" alt="diboot低代码开发平台"/>
-      </a>
-    </td>
-    <td align="center" valign="middle">
-      <a href="https://www.iyque.cn/" target="_blank">
-        <img height="120" src="https://iyque-1251309172.cos.ap-nanjing.myqcloud.com/advert/wxjava.jpg" alt="aliyun ad">
-      </a>
-    </td>
-  </tr>
-</table>
 
 ### 重要信息
 1. [`WxJava` 荣获 `GitCode` 2024年度十大开源社区奖项](https://mp.weixin.qq.com/s/wM_UlMsDm3IZ1CPPDvcvQw)。
