@@ -6,24 +6,25 @@ import me.chanjar.weixin.common.error.WxError;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.common.error.WxRuntimeException;
 import me.chanjar.weixin.common.util.http.HttpClientType;
-import me.chanjar.weixin.common.util.http.apache.ApacheBasicResponseHandler;
-import me.chanjar.weixin.common.util.http.apache.ApacheHttpClientBuilder;
-import me.chanjar.weixin.common.util.http.apache.DefaultApacheHttpClientBuilder;
+import me.chanjar.weixin.common.util.http.hc5.ApacheBasicResponseHandler;
+import me.chanjar.weixin.common.util.http.hc5.ApacheHttpClientBuilder;
+import me.chanjar.weixin.common.util.http.hc5.DefaultApacheHttpClientBuilder;
 import me.chanjar.weixin.cp.config.WxCpConfigStorage;
 import me.chanjar.weixin.cp.constant.WxCpApiPathConsts;
-import org.apache.http.HttpHost;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.config.RequestConfig;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.core5.http.HttpHost;
 
 import java.io.IOException;
 
 /**
  * The type Wx cp service apache http client.
  *
- * @author someone
+ * @author altusea
  */
-public class WxCpServiceApacheHttpClientImpl extends BaseWxCpServiceImpl<CloseableHttpClient, HttpHost> {
+public class WxCpServiceApacheHttpClient5Impl extends BaseWxCpServiceImpl<CloseableHttpClient, HttpHost> {
+
   private CloseableHttpClient httpClient;
   private HttpHost httpProxy;
 
@@ -76,16 +77,12 @@ public class WxCpServiceApacheHttpClientImpl extends BaseWxCpServiceImpl<Closeab
 
   @Override
   public void initHttp() {
-    ApacheHttpClientBuilder apacheHttpClientBuilder = this.configStorage
-      .getApacheHttpClientBuilder();
-    if (null == apacheHttpClientBuilder) {
-      apacheHttpClientBuilder = DefaultApacheHttpClientBuilder.get();
-    }
+    ApacheHttpClientBuilder apacheHttpClientBuilder = DefaultApacheHttpClientBuilder.get();
 
     apacheHttpClientBuilder.httpProxyHost(this.configStorage.getHttpProxyHost())
       .httpProxyPort(this.configStorage.getHttpProxyPort())
       .httpProxyUsername(this.configStorage.getHttpProxyUsername())
-      .httpProxyPassword(this.configStorage.getHttpProxyPassword());
+      .httpProxyPassword(this.configStorage.getHttpProxyPassword().toCharArray());
 
     if (this.configStorage.getHttpProxyHost() != null && this.configStorage.getHttpProxyPort() > 0) {
       this.httpProxy = new HttpHost(this.configStorage.getHttpProxyHost(), this.configStorage.getHttpProxyPort());
