@@ -9,7 +9,16 @@
 [![使用IntelliJ IDEA开发维护](https://img.shields.io/badge/IntelliJ%20IDEA-支持-blue.svg)](https://www.jetbrains.com/?from=WxJava-weixin-java-tools)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-#### 微信`Java`开发工具包，支持包括微信支付、开放平台、公众号、企业微信、视频号、小程序等微信功能模块的后端开发。
+<div align="center">
+  <a href="https://hellogithub.com/repository/6de6147050c94db4aedfd7098d19f8d8" target="_blank">
+    <img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=6de6147050c94db4aedfd7098d19f8d8&claim_uid=mwKh0tILBfjlezR" alt="Featured｜HelloGitHub" width="250" height="54" />
+  </a>
+  <a href="https://trendshift.io/repositories/12152" target="_blank">
+    <img src="https://trendshift.io/api/badge/repositories/12152" alt="binarywang%2FWxJava | 趋势转变" width="250" height="55" />
+  </a>
+</div>
+
+### 微信`Java`开发工具包，支持包括微信支付、开放平台、公众号、企业微信、视频号、小程序等微信功能模块的后端开发。
 <div align="center">
   <b>特别赞助</b>
 </div>
@@ -47,16 +56,6 @@
     <td align="center" valign="middle">
       <a href="https://www.iyque.cn/" target="_blank">
         <img height="120" src="https://iyque-1251309172.cos.ap-nanjing.myqcloud.com/advert/wxjava.jpg" alt="aliyun ad">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="3" align="center">
-      <a href="https://hellogithub.com/repository/6de6147050c94db4aedfd7098d19f8d8" target="_blank">
-        <img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=6de6147050c94db4aedfd7098d19f8d8&claim_uid=mwKh0tILBfjlezR" 
-            alt="Featured｜HelloGitHub" style="width: 250px; height: 54px;" width="250" height="54" />
-      </a>
-      <a href="https://trendshift.io/repositories/12152" target="_blank"><img src="https://trendshift.io/api/badge/repositories/12152" alt="binarywang%2FWxJava | 趋势转变" style="width: 250px; height: 55px;" width="250" height="55"/>
       </a>
     </td>
   </tr>
