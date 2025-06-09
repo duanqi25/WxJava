@@ -1,4 +1,4 @@
-package me.chanjar.weixin.common.util.http.hc5;
+package me.chanjar.weixin.common.util.http.hc;
 
 import me.chanjar.weixin.common.enums.WxType;
 import me.chanjar.weixin.common.error.WxErrorException;
@@ -19,9 +19,9 @@ import java.nio.charset.StandardCharsets;
  *
  * @author altusea
  */
-public class ApacheSimplePostRequestExecutor extends SimplePostRequestExecutor<CloseableHttpClient, HttpHost> {
+public class HttpComponentsSimplePostRequestExecutor extends SimplePostRequestExecutor<CloseableHttpClient, HttpHost> {
 
-  public ApacheSimplePostRequestExecutor(RequestHttp<CloseableHttpClient, HttpHost> requestHttp) {
+  public HttpComponentsSimplePostRequestExecutor(RequestHttp<CloseableHttpClient, HttpHost> requestHttp) {
     super(requestHttp);
   }
 

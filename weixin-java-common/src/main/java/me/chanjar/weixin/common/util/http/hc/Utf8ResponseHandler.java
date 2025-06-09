@@ -1,4 +1,4 @@
-package me.chanjar.weixin.common.util.http.hc5;
+package me.chanjar.weixin.common.util.http.hc;
 
 import org.apache.hc.client5.http.ClientProtocolException;
 import org.apache.hc.client5.http.impl.classic.AbstractHttpClientResponseHandler;

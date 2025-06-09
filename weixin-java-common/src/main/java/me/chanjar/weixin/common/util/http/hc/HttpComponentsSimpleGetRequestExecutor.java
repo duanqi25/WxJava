@@ -1,4 +1,4 @@
-package me.chanjar.weixin.common.util.http.hc5;
+package me.chanjar.weixin.common.util.http.hc;
 
 import me.chanjar.weixin.common.enums.WxType;
 import me.chanjar.weixin.common.error.WxErrorException;
@@ -16,9 +16,9 @@ import java.io.IOException;
  *
  * @author altusea
  */
-public class ApacheSimpleGetRequestExecutor extends SimpleGetRequestExecutor<CloseableHttpClient, HttpHost> {
+public class HttpComponentsSimpleGetRequestExecutor extends SimpleGetRequestExecutor<CloseableHttpClient, HttpHost> {
 
-  public ApacheSimpleGetRequestExecutor(RequestHttp<CloseableHttpClient, HttpHost> requestHttp) {
+  public HttpComponentsSimpleGetRequestExecutor(RequestHttp<CloseableHttpClient, HttpHost> requestHttp) {
     super(requestHttp);
   }
 

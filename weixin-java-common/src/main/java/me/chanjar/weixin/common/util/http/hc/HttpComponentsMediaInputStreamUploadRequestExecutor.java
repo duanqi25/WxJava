@@ -1,4 +1,4 @@
-package me.chanjar.weixin.common.util.http.hc5;
+package me.chanjar.weixin.common.util.http.hc;
 
 import me.chanjar.weixin.common.bean.result.WxMediaUploadResult;
 import me.chanjar.weixin.common.enums.WxType;
@@ -23,9 +23,9 @@ import java.io.IOException;
  *
  * @author altusea
  */
-public class ApacheMediaInputStreamUploadRequestExecutor extends MediaInputStreamUploadRequestExecutor<CloseableHttpClient, HttpHost> {
+public class HttpComponentsMediaInputStreamUploadRequestExecutor extends MediaInputStreamUploadRequestExecutor<CloseableHttpClient, HttpHost> {
 
-  public ApacheMediaInputStreamUploadRequestExecutor(RequestHttp<CloseableHttpClient, HttpHost> requestHttp) {
+  public HttpComponentsMediaInputStreamUploadRequestExecutor(RequestHttp<CloseableHttpClient, HttpHost> requestHttp) {
     super(requestHttp);
   }
 

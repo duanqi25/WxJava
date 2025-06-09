@@ -1,4 +1,4 @@
-package me.chanjar.weixin.common.util.http.hc5;
+package me.chanjar.weixin.common.util.http.hc;
 
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.bean.result.WxMinishopImageUploadCustomizeResult;
@@ -24,9 +24,9 @@ import java.io.IOException;
  * @author altusea
  */
 @Slf4j
-public class ApacheMinishopMediaUploadRequestCustomizeExecutor extends MinishopUploadRequestCustomizeExecutor<CloseableHttpClient, HttpHost> {
+public class HttpComponentsMinishopMediaUploadRequestCustomizeExecutor extends MinishopUploadRequestCustomizeExecutor<CloseableHttpClient, HttpHost> {
 
-  public ApacheMinishopMediaUploadRequestCustomizeExecutor(RequestHttp<CloseableHttpClient, HttpHost> requestHttp, String respType, String imgUrl) {
+  public HttpComponentsMinishopMediaUploadRequestCustomizeExecutor(RequestHttp<CloseableHttpClient, HttpHost> requestHttp, String respType, String imgUrl) {
     super(requestHttp, respType, imgUrl);
   }
 

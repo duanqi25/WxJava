@@ -1,4 +1,4 @@
-package me.chanjar.weixin.common.util.http.hc5;
+package me.chanjar.weixin.common.util.http.hc;
 
 import me.chanjar.weixin.common.enums.WxType;
 import me.chanjar.weixin.common.error.WxError;
@@ -28,9 +28,9 @@ import java.io.InputStream;
  *
  * @author altusea
  */
-public class ApacheMediaDownloadRequestExecutor extends BaseMediaDownloadRequestExecutor<CloseableHttpClient, HttpHost> {
+public class HttpComponentsMediaDownloadRequestExecutor extends BaseMediaDownloadRequestExecutor<CloseableHttpClient, HttpHost> {
 
-  public ApacheMediaDownloadRequestExecutor(RequestHttp<CloseableHttpClient, HttpHost> requestHttp, File tmpDirFile) {
+  public HttpComponentsMediaDownloadRequestExecutor(RequestHttp<CloseableHttpClient, HttpHost> requestHttp, File tmpDirFile) {
     super(requestHttp, tmpDirFile);
   }
 
@@ -71,7 +71,7 @@ public class ApacheMediaDownloadRequestExecutor extends BaseMediaDownloadRequest
       }
 
       return FileUtils.createTmpFile(inputStream, baseName, FilenameUtils.getExtension(fileName), super.tmpDirFile);
-    } catch (final HttpException httpException) {
+    } catch (HttpException httpException) {
       throw new ClientProtocolException(httpException.getMessage(), httpException);
     }
   }

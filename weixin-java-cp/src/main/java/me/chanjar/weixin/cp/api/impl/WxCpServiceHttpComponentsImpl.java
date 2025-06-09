@@ -6,9 +6,9 @@ import me.chanjar.weixin.common.error.WxError;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.common.error.WxRuntimeException;
 import me.chanjar.weixin.common.util.http.HttpClientType;
-import me.chanjar.weixin.common.util.http.hc5.ApacheBasicResponseHandler;
-import me.chanjar.weixin.common.util.http.hc5.ApacheHttpClientBuilder;
-import me.chanjar.weixin.common.util.http.hc5.DefaultApacheHttpClientBuilder;
+import me.chanjar.weixin.common.util.http.hc.BasicResponseHandler;
+import me.chanjar.weixin.common.util.http.hc.DefaultHttpComponentsClientBuilder;
+import me.chanjar.weixin.common.util.http.hc.HttpComponentsClientBuilder;
 import me.chanjar.weixin.cp.config.WxCpConfigStorage;
 import me.chanjar.weixin.cp.constant.WxCpApiPathConsts;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
@@ -23,7 +23,7 @@ import java.io.IOException;
  *
  * @author altusea
  */
-public class WxCpServiceApacheHttpClient5Impl extends BaseWxCpServiceImpl<CloseableHttpClient, HttpHost> {
+public class WxCpServiceHttpComponentsImpl extends BaseWxCpServiceImpl<CloseableHttpClient, HttpHost> {
 
   private CloseableHttpClient httpClient;
   private HttpHost httpProxy;
@@ -40,7 +40,7 @@ public class WxCpServiceApacheHttpClient5Impl extends BaseWxCpServiceImpl<Closea
 
   @Override
   public HttpClientType getRequestType() {
-    return HttpClientType.APACHE_HTTP;
+    return HttpClientType.HTTP_COMPONENTS;
   }
 
   @Override
@@ -60,7 +60,7 @@ public class WxCpServiceApacheHttpClient5Impl extends BaseWxCpServiceImpl<Closea
             .setProxy(this.httpProxy).build();
           httpGet.setConfig(config);
         }
-        String resultContent = getRequestHttpClient().execute(httpGet, ApacheBasicResponseHandler.INSTANCE);
+        String resultContent = getRequestHttpClient().execute(httpGet, BasicResponseHandler.INSTANCE);
         WxError error = WxError.fromJson(resultContent, WxType.CP);
         if (error.getErrorCode() != 0) {
           throw new WxErrorException(error);
@@ -77,7 +77,7 @@ public class WxCpServiceApacheHttpClient5Impl extends BaseWxCpServiceImpl<Closea
 
   @Override
   public void initHttp() {
-    ApacheHttpClientBuilder apacheHttpClientBuilder = DefaultApacheHttpClientBuilder.get();
+    HttpComponentsClientBuilder apacheHttpClientBuilder = DefaultHttpComponentsClientBuilder.get();
 
     apacheHttpClientBuilder.httpProxyHost(this.configStorage.getHttpProxyHost())
       .httpProxyPort(this.configStorage.getHttpProxyPort())

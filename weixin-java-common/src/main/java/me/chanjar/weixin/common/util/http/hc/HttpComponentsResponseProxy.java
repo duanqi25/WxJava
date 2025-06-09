@@ -1,15 +1,15 @@
-package me.chanjar.weixin.common.util.http.hc5;
+package me.chanjar.weixin.common.util.http.hc;
 
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.common.util.http.HttpResponseProxy;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.core5.http.Header;
 
-public class ApacheHttpClient5ResponseProxy implements HttpResponseProxy {
+public class HttpComponentsResponseProxy implements HttpResponseProxy {
 
   private final CloseableHttpResponse response;
 
-  public ApacheHttpClient5ResponseProxy(CloseableHttpResponse closeableHttpResponse) {
+  public HttpComponentsResponseProxy(CloseableHttpResponse closeableHttpResponse) {
     this.response = closeableHttpResponse;
   }
 
@@ -20,6 +20,6 @@ public class ApacheHttpClient5ResponseProxy implements HttpResponseProxy {
       throw new WxErrorException("无法获取到文件名，Content-disposition为空");
     }
 
-    return extractFileNameFromContentString(contentDispositionHeader[0].getValue());
+    return HttpResponseProxy.extractFileNameFromContentString(contentDispositionHeader[0].getValue());
   }
 }

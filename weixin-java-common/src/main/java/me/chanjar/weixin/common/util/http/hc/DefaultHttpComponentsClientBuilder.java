@@ -1,7 +1,9 @@
-package me.chanjar.weixin.common.util.http.hc5;
+package me.chanjar.weixin.common.util.http.hc;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import me.chanjar.weixin.common.util.http.apache.ApacheHttpClientBuilder;
+import me.chanjar.weixin.common.util.http.apache.DefaultApacheHttpClientBuilder;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.hc.client5.http.ConnectionKeepAliveStrategy;
@@ -43,7 +45,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @Slf4j
 @Data
 @NotThreadSafe
-public class DefaultApacheHttpClientBuilder implements ApacheHttpClientBuilder {
+public class DefaultHttpComponentsClientBuilder implements HttpComponentsClientBuilder {
 
   private final AtomicBoolean prepared = new AtomicBoolean(false);
 
@@ -121,45 +123,45 @@ public class DefaultApacheHttpClientBuilder implements ApacheHttpClientBuilder {
    */
   private CloseableHttpClient closeableHttpClient;
 
-  private DefaultApacheHttpClientBuilder() {
+  private DefaultHttpComponentsClientBuilder() {
   }
 
-  public static DefaultApacheHttpClientBuilder get() {
+  public static DefaultHttpComponentsClientBuilder get() {
     return SingletonHolder.INSTANCE;
   }
 
   @Override
-  public ApacheHttpClientBuilder httpProxyHost(String httpProxyHost) {
+  public HttpComponentsClientBuilder httpProxyHost(String httpProxyHost) {
     this.httpProxyHost = httpProxyHost;
     return this;
   }
 
   @Override
-  public ApacheHttpClientBuilder httpProxyPort(int httpProxyPort) {
+  public HttpComponentsClientBuilder httpProxyPort(int httpProxyPort) {
     this.httpProxyPort = httpProxyPort;
     return this;
   }
 
   @Override
-  public ApacheHttpClientBuilder httpProxyUsername(String httpProxyUsername) {
+  public HttpComponentsClientBuilder httpProxyUsername(String httpProxyUsername) {
     this.httpProxyUsername = httpProxyUsername;
     return this;
   }
 
   @Override
-  public ApacheHttpClientBuilder httpProxyPassword(char[] httpProxyPassword) {
+  public HttpComponentsClientBuilder httpProxyPassword(char[] httpProxyPassword) {
     this.httpProxyPassword = httpProxyPassword;
     return this;
   }
 
   @Override
-  public ApacheHttpClientBuilder httpRequestRetryStrategy(HttpRequestRetryStrategy httpRequestRetryStrategy) {
+  public HttpComponentsClientBuilder httpRequestRetryStrategy(HttpRequestRetryStrategy httpRequestRetryStrategy) {
     this.httpRequestRetryStrategy = httpRequestRetryStrategy;
     return this;
   }
 
   @Override
-  public ApacheHttpClientBuilder keepAliveStrategy(ConnectionKeepAliveStrategy keepAliveStrategy) {
+  public HttpComponentsClientBuilder keepAliveStrategy(ConnectionKeepAliveStrategy keepAliveStrategy) {
     this.connectionKeepAliveStrategy = keepAliveStrategy;
     return this;
   }
@@ -242,6 +244,6 @@ public class DefaultApacheHttpClientBuilder implements ApacheHttpClientBuilder {
    * DefaultApacheHttpClientBuilder 改为单例模式,并持有唯一的CloseableHttpClient(仅首次调用创建)
    */
   private static class SingletonHolder {
-    private static final DefaultApacheHttpClientBuilder INSTANCE = new DefaultApacheHttpClientBuilder();
+    private static final DefaultHttpComponentsClientBuilder INSTANCE = new DefaultHttpComponentsClientBuilder();
   }
 }
